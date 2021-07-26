@@ -1,0 +1,63 @@
+﻿<Page x:Class="DIPLOM.Pade.Account"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DIPLOM.Pade"
+      mc:Ignorable="d" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Account">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50.6"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="1" RenderTransformOrigin="0.502,0.528">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="261*"/>
+                <ColumnDefinition Width="539*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Row="0" Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="242*"/>
+                    <RowDefinition Height="157*"/>
+                </Grid.RowDefinitions>
+                <Image Source="{Binding photo}" Name="img_photo" Margin="20" Grid.Row="0" MouseDown="img_photo_MouseDown"/>
+            </Grid>
+
+            <StackPanel Grid.Row="0" Grid.Column="1" >
+                <TextBlock x:Name="txt_fio" Text="{Binding fio}" FontSize="30"/>
+                <TextBlock Text="{Binding job}" x:Name="txt_job"  FontSize="18" Margin="0 15 0 15"/>
+                
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35*"/>
+                        <RowDefinition Height="38*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="141*"/>
+                        <ColumnDefinition Width="168*"/>
+                        <ColumnDefinition Width="268*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Телефон:" Grid.Column="0" Grid.Row="0" FontSize="18" Margin="0 15"/>
+
+                    <xctk:MaskedTextBox x:Name="txt_phone" Mask="+7(000)000-00-00" Text="{Binding Phonenumber}" FontSize="14"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="0" Grid.Column="1" BorderThickness="0"  />
+                    <TextBlock Text="Email:" Grid.Column="0" Grid.Row="1" FontSize="18" Margin="0 15" />
+                    <TextBox Foreground="Black" x:Name="txt_email" Grid.Row="1" Margin="0 15" FontSize="14" BorderThickness="0" Grid.Column="1"  />
+                </Grid>
+                <Button Margin="0 0 40 0" Content="Изменить" Background="#FF42A5F5" FontFamily="Bahnschrift Light" Click="BNTUpdate" Width="100" HorizontalAlignment="Right"/>
+
+                
+            </StackPanel>
+        </Grid>
+
+
+    </Grid>
+</Page>

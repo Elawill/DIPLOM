@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7c0fdb57225a428ab814b9c0c886dd72" Name="Diagram1">
+        <EntityTypeShape EntityType="DiplomModel.Adress" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiplomModel.Category" Width="1.5" PointX="5.25" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiplomModel.Check" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiplomModel.Document" Width="1.5" PointX="7.5" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiplomModel.Narushenia" Width="1.5" PointX="9.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiplomModel.Object" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiplomModel.Organization" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiplomModel.Person" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiplomModel.Question" Width="1.5" PointX="7.5" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiplomModel.Status" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiplomModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiplomModel.Users" Width="1.5" PointX="5.25" PointY="12" IsExpanded="true" />
+        <AssociationConnector Association="DiplomModel.FK_Object_Adress" ManuallyRouted="false" />
+        <AssociationConnector Association="DiplomModel.FK_Organization_Adress1" ManuallyRouted="false" />
+        <AssociationConnector Association="DiplomModel.FK_Person_Adress1" ManuallyRouted="false" />
+        <AssociationConnector Association="DiplomModel.FK_Question_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="DiplomModel.FK_Check_Object" ManuallyRouted="false" />
+        <AssociationConnector Association="DiplomModel.FK_Check_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="DiplomModel.FK_Document_Check" ManuallyRouted="false" />
+        <AssociationConnector Association="DiplomModel.FK_Question_Check" ManuallyRouted="false" />
+        <AssociationConnector Association="DiplomModel.FK_Narushenia_Question" ManuallyRouted="false" />
+        <AssociationConnector Association="DiplomModel.FK_Organization_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="DiplomModel.FK_Users_Person" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

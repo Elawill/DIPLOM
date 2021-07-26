@@ -1,0 +1,867 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище DiplomModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Adress">
+          <Key>
+            <PropertyRef Name="id_adress" />
+          </Key>
+          <Property Name="id_adress" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="country" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="city" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="street" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="n_house" Type="int" Nullable="false" />
+          <Property Name="n_kv" Type="int" />
+          <Property Name="floor" Type="int" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="id_category" />
+          </Key>
+          <Property Name="id_category" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Check">
+          <Key>
+            <PropertyRef Name="id_check" />
+          </Key>
+          <Property Name="id_check" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_person" Type="int" Nullable="false" />
+          <Property Name="id_object" Type="int" Nullable="false" />
+          <Property Name="id_status" Type="int" Nullable="false" />
+          <Property Name="vid" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+          <Property Name="dateStart" Type="datetime" />
+          <Property Name="replay" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="id_document" />
+          </Key>
+          <Property Name="id_document" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_check" Type="int" Nullable="false" />
+          <Property Name="id_organization" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Narushenia">
+          <Key>
+            <PropertyRef Name="id_narushen" />
+          </Key>
+          <Property Name="id_narushen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_question" Type="int" Nullable="false" />
+          <Property Name="comment" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="photo" Type="nvarchar(max)" />
+          <Property Name="correction" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Object">
+          <Key>
+            <PropertyRef Name="id_object" />
+          </Key>
+          <Property Name="id_object" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="person" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="id_adress" Type="int" Nullable="false" />
+          <Property Name="phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="vid_production" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Organization">
+          <Key>
+            <PropertyRef Name="id_organization" />
+          </Key>
+          <Property Name="id_organization" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="id_person" Type="int" Nullable="false" />
+          <Property Name="id_adress" Type="int" Nullable="false" />
+          <Property Name="phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="id_person" />
+          </Key>
+          <Property Name="id_person" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fio" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="job" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="seria" Type="int" Nullable="false" />
+          <Property Name="number" Type="int" Nullable="false" />
+          <Property Name="date" Type="date" Nullable="false" />
+          <Property Name="phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+          <Property Name="photo" Type="nvarchar(max)" />
+          <Property Name="id_adress" Type="int" Nullable="false" />
+          <Property Name="status_check" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="id_question" />
+          </Key>
+          <Property Name="id_question" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="answer" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="id_category" Type="int" Nullable="false" />
+          <Property Name="id_check" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="id_status" />
+          </Key>
+          <Property Name="id_status" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id_user" />
+          </Key>
+          <Property Name="id_user" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="id_person" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Check_Object">
+          <End Role="Object" Type="Self.Object" Multiplicity="1" />
+          <End Role="Check" Type="Self.Check" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Object">
+              <PropertyRef Name="id_object" />
+            </Principal>
+            <Dependent Role="Check">
+              <PropertyRef Name="id_object" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Check_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Check" Type="Self.Check" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="id_status" />
+            </Principal>
+            <Dependent Role="Check">
+              <PropertyRef Name="id_status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Document_Check">
+          <End Role="Check" Type="Self.Check" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Document" Type="Self.Document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Check">
+              <PropertyRef Name="id_check" />
+            </Principal>
+            <Dependent Role="Document">
+              <PropertyRef Name="id_check" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Narushenia_Question">
+          <End Role="Question" Type="Self.Question" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Narushenia" Type="Self.Narushenia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="id_question" />
+            </Principal>
+            <Dependent Role="Narushenia">
+              <PropertyRef Name="id_question" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Object_Adress">
+          <End Role="Adress" Type="Self.Adress" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Object" Type="Self.Object" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adress">
+              <PropertyRef Name="id_adress" />
+            </Principal>
+            <Dependent Role="Object">
+              <PropertyRef Name="id_adress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Organization_Adress1">
+          <End Role="Adress" Type="Self.Adress" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Organization" Type="Self.Organization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adress">
+              <PropertyRef Name="id_adress" />
+            </Principal>
+            <Dependent Role="Organization">
+              <PropertyRef Name="id_adress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Organization_Person">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="Organization" Type="Self.Organization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="id_person" />
+            </Principal>
+            <Dependent Role="Organization">
+              <PropertyRef Name="id_person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Person_Adress1">
+          <End Role="Adress" Type="Self.Adress" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Person" Type="Self.Person" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adress">
+              <PropertyRef Name="id_adress" />
+            </Principal>
+            <Dependent Role="Person">
+              <PropertyRef Name="id_adress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Question_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Question" Type="Self.Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="id_category" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="id_category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Question_Check">
+          <End Role="Check" Type="Self.Check" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Question" Type="Self.Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Check">
+              <PropertyRef Name="id_check" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="id_check" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Person">
+          <End Role="Person" Type="Self.Person" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="id_person" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="id_person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище DiplomModelContainer">
+          <EntitySet Name="Adress" EntityType="Self.Adress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Check" EntityType="Self.Check" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Document" EntityType="Self.Document" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Narushenia" EntityType="Self.Narushenia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Object" EntityType="Self.Object" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Organization" EntityType="Self.Organization" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Check_Object" Association="Self.FK_Check_Object">
+            <End Role="Object" EntitySet="Object" />
+            <End Role="Check" EntitySet="Check" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Check_Status" Association="Self.FK_Check_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Check" EntitySet="Check" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Document_Check" Association="Self.FK_Document_Check">
+            <End Role="Check" EntitySet="Check" />
+            <End Role="Document" EntitySet="Document" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Narushenia_Question" Association="Self.FK_Narushenia_Question">
+            <End Role="Question" EntitySet="Question" />
+            <End Role="Narushenia" EntitySet="Narushenia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Object_Adress" Association="Self.FK_Object_Adress">
+            <End Role="Adress" EntitySet="Adress" />
+            <End Role="Object" EntitySet="Object" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Organization_Adress1" Association="Self.FK_Organization_Adress1">
+            <End Role="Adress" EntitySet="Adress" />
+            <End Role="Organization" EntitySet="Organization" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Organization_Person" Association="Self.FK_Organization_Person">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Organization" EntitySet="Organization" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Person_Adress1" Association="Self.FK_Person_Adress1">
+            <End Role="Adress" EntitySet="Adress" />
+            <End Role="Person" EntitySet="Person" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Question_Category" Association="Self.FK_Question_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Question" EntitySet="Question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Question_Check" Association="Self.FK_Question_Check">
+            <End Role="Check" EntitySet="Check" />
+            <End Role="Question" EntitySet="Question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Person" Association="Self.FK_Users_Person">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DiplomModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Adress">
+          <Key>
+            <PropertyRef Name="id_adress" />
+          </Key>
+          <Property Name="id_adress" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="country" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="city" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="street" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="n_house" Type="Int32" Nullable="false" />
+          <Property Name="n_kv" Type="Int32" />
+          <Property Name="floor" Type="Int32" />
+          <NavigationProperty Name="Object" Relationship="Self.FK_Object_Adress" FromRole="Adress" ToRole="Object" />
+          <NavigationProperty Name="Organization" Relationship="Self.FK_Organization_Adress1" FromRole="Adress" ToRole="Organization" />
+          <NavigationProperty Name="Person" Relationship="Self.FK_Person_Adress1" FromRole="Adress" ToRole="Person" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="id_category" />
+          </Key>
+          <Property Name="id_category" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Question" Relationship="Self.FK_Question_Category" FromRole="Category" ToRole="Question" />
+        </EntityType>
+        <EntityType Name="Check">
+          <Key>
+            <PropertyRef Name="id_check" />
+          </Key>
+          <Property Name="id_check" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_person" Type="Int32" Nullable="false" />
+          <Property Name="id_object" Type="Int32" Nullable="false" />
+          <Property Name="id_status" Type="Int32" Nullable="false" />
+          <Property Name="vid" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dateStart" Type="DateTime" Precision="3" />
+          <Property Name="replay" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Object" Relationship="Self.FK_Check_Object" FromRole="Check" ToRole="Object" />
+          <NavigationProperty Name="Status" Relationship="Self.FK_Check_Status" FromRole="Check" ToRole="Status" />
+          <NavigationProperty Name="Document" Relationship="Self.FK_Document_Check" FromRole="Check" ToRole="Document" />
+          <NavigationProperty Name="Question" Relationship="Self.FK_Question_Check" FromRole="Check" ToRole="Question" />
+        </EntityType>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="id_document" />
+          </Key>
+          <Property Name="id_document" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_check" Type="Int32" Nullable="false" />
+          <Property Name="id_organization" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Check" Relationship="Self.FK_Document_Check" FromRole="Document" ToRole="Check" />
+        </EntityType>
+        <EntityType Name="Narushenia">
+          <Key>
+            <PropertyRef Name="id_narushen" />
+          </Key>
+          <Property Name="id_narushen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_question" Type="Int32" Nullable="false" />
+          <Property Name="comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="correction" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Question" Relationship="Self.FK_Narushenia_Question" FromRole="Narushenia" ToRole="Question" />
+        </EntityType>
+        <EntityType Name="Object">
+          <Key>
+            <PropertyRef Name="id_object" />
+          </Key>
+          <Property Name="id_object" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="person" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_adress" Type="Int32" Nullable="false" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="vid_production" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Adress" Relationship="Self.FK_Object_Adress" FromRole="Object" ToRole="Adress" />
+          <NavigationProperty Name="Check" Relationship="Self.FK_Check_Object" FromRole="Object" ToRole="Check" />
+        </EntityType>
+        <EntityType Name="Organization">
+          <Key>
+            <PropertyRef Name="id_organization" />
+          </Key>
+          <Property Name="id_organization" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_person" Type="Int32" Nullable="false" />
+          <Property Name="id_adress" Type="Int32" Nullable="false" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Adress" Relationship="Self.FK_Organization_Adress1" FromRole="Organization" ToRole="Adress" />
+          <NavigationProperty Name="Person" Relationship="Self.FK_Organization_Person" FromRole="Organization" ToRole="Person" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="id_person" />
+          </Key>
+          <Property Name="id_person" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fio" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="job" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="seria" Type="Int32" Nullable="false" />
+          <Property Name="number" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="id_adress" Type="Int32" Nullable="false" />
+          <Property Name="status_check" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Adress" Relationship="Self.FK_Person_Adress1" FromRole="Person" ToRole="Adress" />
+          <NavigationProperty Name="Organization" Relationship="Self.FK_Organization_Person" FromRole="Person" ToRole="Organization" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_Person" FromRole="Person" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="id_question" />
+          </Key>
+          <Property Name="id_question" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="answer" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="id_category" Type="Int32" Nullable="false" />
+          <Property Name="id_check" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Question_Category" FromRole="Question" ToRole="Category" />
+          <NavigationProperty Name="Check" Relationship="Self.FK_Question_Check" FromRole="Question" ToRole="Check" />
+          <NavigationProperty Name="Narushenia" Relationship="Self.FK_Narushenia_Question" FromRole="Question" ToRole="Narushenia" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="id_status" />
+          </Key>
+          <Property Name="id_status" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Check" Relationship="Self.FK_Check_Status" FromRole="Status" ToRole="Check" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id_user" />
+          </Key>
+          <Property Name="id_user" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_person" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Person" Relationship="Self.FK_Users_Person" FromRole="Users" ToRole="Person" />
+        </EntityType>
+        <Association Name="FK_Object_Adress">
+          <End Role="Adress" Type="Self.Adress" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Object" Type="Self.Object" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adress">
+              <PropertyRef Name="id_adress" />
+            </Principal>
+            <Dependent Role="Object">
+              <PropertyRef Name="id_adress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Organization_Adress1">
+          <End Role="Adress" Type="Self.Adress" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Organization" Type="Self.Organization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adress">
+              <PropertyRef Name="id_adress" />
+            </Principal>
+            <Dependent Role="Organization">
+              <PropertyRef Name="id_adress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Person_Adress1">
+          <End Role="Adress" Type="Self.Adress" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Person" Type="Self.Person" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adress">
+              <PropertyRef Name="id_adress" />
+            </Principal>
+            <Dependent Role="Person">
+              <PropertyRef Name="id_adress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Question_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Question" Type="Self.Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="id_category" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="id_category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Check_Object">
+          <End Role="Object" Type="Self.Object" Multiplicity="1" />
+          <End Role="Check" Type="Self.Check" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Object">
+              <PropertyRef Name="id_object" />
+            </Principal>
+            <Dependent Role="Check">
+              <PropertyRef Name="id_object" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Check_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Check" Type="Self.Check" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="id_status" />
+            </Principal>
+            <Dependent Role="Check">
+              <PropertyRef Name="id_status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Document_Check">
+          <End Role="Check" Type="Self.Check" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Document" Type="Self.Document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Check">
+              <PropertyRef Name="id_check" />
+            </Principal>
+            <Dependent Role="Document">
+              <PropertyRef Name="id_check" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Question_Check">
+          <End Role="Check" Type="Self.Check" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Question" Type="Self.Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Check">
+              <PropertyRef Name="id_check" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="id_check" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Narushenia_Question">
+          <End Role="Question" Type="Self.Question" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Narushenia" Type="Self.Narushenia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="id_question" />
+            </Principal>
+            <Dependent Role="Narushenia">
+              <PropertyRef Name="id_question" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Organization_Person">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="Organization" Type="Self.Organization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="id_person" />
+            </Principal>
+            <Dependent Role="Organization">
+              <PropertyRef Name="id_person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Person">
+          <End Role="Person" Type="Self.Person" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="id_person" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="id_person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DiplomEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Adress" EntityType="Self.Adress" />
+          <EntitySet Name="Category" EntityType="Self.Category" />
+          <EntitySet Name="Check" EntityType="Self.Check" />
+          <EntitySet Name="Document" EntityType="Self.Document" />
+          <EntitySet Name="Narushenia" EntityType="Self.Narushenia" />
+          <EntitySet Name="Object" EntityType="Self.Object" />
+          <EntitySet Name="Organization" EntityType="Self.Organization" />
+          <EntitySet Name="Person" EntityType="Self.Person" />
+          <EntitySet Name="Question" EntityType="Self.Question" />
+          <EntitySet Name="Status" EntityType="Self.Status" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <AssociationSet Name="FK_Object_Adress" Association="Self.FK_Object_Adress">
+            <End Role="Adress" EntitySet="Adress" />
+            <End Role="Object" EntitySet="Object" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Organization_Adress1" Association="Self.FK_Organization_Adress1">
+            <End Role="Adress" EntitySet="Adress" />
+            <End Role="Organization" EntitySet="Organization" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Person_Adress1" Association="Self.FK_Person_Adress1">
+            <End Role="Adress" EntitySet="Adress" />
+            <End Role="Person" EntitySet="Person" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Question_Category" Association="Self.FK_Question_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Question" EntitySet="Question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Check_Object" Association="Self.FK_Check_Object">
+            <End Role="Object" EntitySet="Object" />
+            <End Role="Check" EntitySet="Check" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Check_Status" Association="Self.FK_Check_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Check" EntitySet="Check" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Document_Check" Association="Self.FK_Document_Check">
+            <End Role="Check" EntitySet="Check" />
+            <End Role="Document" EntitySet="Document" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Question_Check" Association="Self.FK_Question_Check">
+            <End Role="Check" EntitySet="Check" />
+            <End Role="Question" EntitySet="Question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Narushenia_Question" Association="Self.FK_Narushenia_Question">
+            <End Role="Question" EntitySet="Question" />
+            <End Role="Narushenia" EntitySet="Narushenia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Organization_Person" Association="Self.FK_Organization_Person">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Organization" EntitySet="Organization" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Person" Association="Self.FK_Users_Person">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище DiplomModelContainer" CdmEntityContainer="DiplomEntities">
+          <EntitySetMapping Name="Adress">
+            <EntityTypeMapping TypeName="DiplomModel.Adress">
+              <MappingFragment StoreEntitySet="Adress">
+                <ScalarProperty Name="id_adress" ColumnName="id_adress" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="street" ColumnName="street" />
+                <ScalarProperty Name="n_house" ColumnName="n_house" />
+                <ScalarProperty Name="n_kv" ColumnName="n_kv" />
+                <ScalarProperty Name="floor" ColumnName="floor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Category">
+            <EntityTypeMapping TypeName="DiplomModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="id_category" ColumnName="id_category" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Check">
+            <EntityTypeMapping TypeName="DiplomModel.Check">
+              <MappingFragment StoreEntitySet="Check">
+                <ScalarProperty Name="id_check" ColumnName="id_check" />
+                <ScalarProperty Name="id_person" ColumnName="id_person" />
+                <ScalarProperty Name="id_object" ColumnName="id_object" />
+                <ScalarProperty Name="id_status" ColumnName="id_status" />
+                <ScalarProperty Name="vid" ColumnName="vid" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="dateStart" ColumnName="dateStart" />
+                <ScalarProperty Name="replay" ColumnName="replay" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Document">
+            <EntityTypeMapping TypeName="DiplomModel.Document">
+              <MappingFragment StoreEntitySet="Document">
+                <ScalarProperty Name="id_document" ColumnName="id_document" />
+                <ScalarProperty Name="id_check" ColumnName="id_check" />
+                <ScalarProperty Name="id_organization" ColumnName="id_organization" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Narushenia">
+            <EntityTypeMapping TypeName="DiplomModel.Narushenia">
+              <MappingFragment StoreEntitySet="Narushenia">
+                <ScalarProperty Name="id_narushen" ColumnName="id_narushen" />
+                <ScalarProperty Name="id_question" ColumnName="id_question" />
+                <ScalarProperty Name="comment" ColumnName="comment" />
+                <ScalarProperty Name="photo" ColumnName="photo" />
+                <ScalarProperty Name="correction" ColumnName="correction" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Object">
+            <EntityTypeMapping TypeName="DiplomModel.Object">
+              <MappingFragment StoreEntitySet="Object">
+                <ScalarProperty Name="id_object" ColumnName="id_object" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="person" ColumnName="person" />
+                <ScalarProperty Name="id_adress" ColumnName="id_adress" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="vid_production" ColumnName="vid_production" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Organization">
+            <EntityTypeMapping TypeName="DiplomModel.Organization">
+              <MappingFragment StoreEntitySet="Organization">
+                <ScalarProperty Name="id_organization" ColumnName="id_organization" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id_person" ColumnName="id_person" />
+                <ScalarProperty Name="id_adress" ColumnName="id_adress" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Person">
+            <EntityTypeMapping TypeName="DiplomModel.Person">
+              <MappingFragment StoreEntitySet="Person">
+                <ScalarProperty Name="id_person" ColumnName="id_person" />
+                <ScalarProperty Name="fio" ColumnName="fio" />
+                <ScalarProperty Name="job" ColumnName="job" />
+                <ScalarProperty Name="seria" ColumnName="seria" />
+                <ScalarProperty Name="number" ColumnName="number" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="photo" ColumnName="photo" />
+                <ScalarProperty Name="id_adress" ColumnName="id_adress" />
+                <ScalarProperty Name="status_check" ColumnName="status_check" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Question">
+            <EntityTypeMapping TypeName="DiplomModel.Question">
+              <MappingFragment StoreEntitySet="Question">
+                <ScalarProperty Name="id_question" ColumnName="id_question" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="answer" ColumnName="answer" />
+                <ScalarProperty Name="id_category" ColumnName="id_category" />
+                <ScalarProperty Name="id_check" ColumnName="id_check" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="DiplomModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="id_status" ColumnName="id_status" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DiplomModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="DiplomModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="id_person" ColumnName="id_person" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
